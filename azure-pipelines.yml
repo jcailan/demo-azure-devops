@@ -23,3 +23,9 @@ steps:
 - script: |
     npm run test-azure
   displayName: 'Execute Unit Tests'
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: '**/test-results.xml'
